@@ -62,7 +62,6 @@ public class Screen2 extends Activity {
                                 Tripppy.current_trip_name = etName.getText().toString().trim();
                                 dlg.dismiss();
                                 Tripppy.db.open();
-                                Tripppy.db.addTrip(Tripppy.current_trip_name);
                                 List<ItemInfo> itemInfos = buildAnyItems(Tripppy.current_trip_name);
                                 addItemsToDb(itemInfos);
                                 Tripppy.db.close();

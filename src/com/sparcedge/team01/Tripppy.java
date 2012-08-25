@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,6 +39,9 @@ public class Tripppy extends Activity {
     Weather wx = null;
     ProgressDialog progressDialog = null;
     String woeid = "29466";
+    static String GSPREFS = "GS-prefs";
+    static public Boolean first_time = true;
+
 
     /**
      * Called when the activity is first created.
@@ -103,9 +107,14 @@ public class Tripppy extends Activity {
             facebook.authorize(currentActivity,new String[] {"publish_stream"},new Facebook.DialogListener() {
                 @Override
                 public void onComplete(Bundle values) {
-                    updateStatus(values.getString(Facebook.TOKEN));
+                    loadPreferences();
+                    if(first_time){
+                        updateStatus(values.getString(Facebook.TOKEN));
+                    }
                     Intent sndMsgIntent4 = new Intent(mContext, Screen2.class);
                     startActivityForResult(sndMsgIntent4, REQUEST_SCREEN2);
+                    first_time = false;
+                    savePreferences();
                 }
 
                 @Override
@@ -220,5 +229,20 @@ public class Tripppy extends Activity {
             }
         }
     }
+
+    public void savePreferences() {
+        SharedPreferences mySharedPrefs = getSharedPreferences(GSPREFS,
+                Activity.MODE_WORLD_WRITEABLE);
+        SharedPreferences.Editor editor = mySharedPrefs.edit();
+        editor.putBoolean("first_time", first_time);
+        editor.commit();
+    }
+
+    public void loadPreferences() {
+        SharedPreferences mySharedPrefs = getSharedPreferences(GSPREFS,
+                Activity.MODE_WORLD_WRITEABLE);
+        first_time = mySharedPrefs.getBoolean("first_time", true);
+    }
+
 
 }

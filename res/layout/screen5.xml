@@ -22,6 +22,7 @@
         android:layout_width="fill_parent"
         android:textColor="@color/black"
         android:layout_weight="5"
+        android:cacheColorHint="#00000000"
         />
 
 

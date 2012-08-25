@@ -3,6 +3,7 @@ package com.sparcedge.team01;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,6 +26,8 @@ import java.util.Vector;
 public class Screen5 extends ListActivity {
     private LayoutInflater mInflater;
     private Vector<String> data;
+    public static int REQUEST_SCREEN2 = Tripppy.REQUEST_SCREEN2;
+
     String rd;
     static final String[] items =
             new String[] { "underwear", "dress clothes" , "DVDs", "water", "money" };
@@ -34,6 +37,16 @@ public class Screen5 extends ListActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.screen5);
         refreshList();
+
+        Button btnSaveTrip = (Button) findViewById(R.id.btnSaveTrip);
+        btnSaveTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sndMsgIntent4 = new Intent(Tripppy.mContext, Screen2.class);
+                startActivityForResult(sndMsgIntent4, REQUEST_SCREEN2);
+            }
+        });
+
 
     }
 

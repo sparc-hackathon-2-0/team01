@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,6 +30,16 @@ public class Screen3 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen3);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        EditText etMonth = (EditText) findViewById(R.id.etMonth);
+        EditText etDay = (EditText) findViewById(R.id.etDay);
+        EditText etYear = (EditText) findViewById(R.id.etYear);
+        Calendar now = Calendar.getInstance();
+        Date dNow = now.getTime();
+        etMonth.setText("" + (dNow.getMonth() + 1));
+        etDay.setText("" + dNow.getDate());
+        etYear.setText("" + (1900 + dNow.getYear()));
+
 
         Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
         if(btnSubmit != null) {
@@ -76,7 +88,12 @@ public class Screen3 extends Activity {
                 // we got it
                 Tripppy.LOG("WOEID: " + Tripppy.woeid);
                 Tripppy.LOG("Temp: " + Tripppy.wx.getTemp());
-                int temp = Integer.parseInt(Tripppy.wx.getTemp());
+                int temp = 80;
+                try {
+                  temp = Integer.parseInt(Tripppy.wx.getTemp());
+                } catch (Exception e) {
+                    temp = 80;
+                }
                 if (temp<55){
                     addColdItems();
                 }

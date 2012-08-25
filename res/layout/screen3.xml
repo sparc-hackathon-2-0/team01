@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:foo="http://schemas.android.com/apk/res/com.sparcedge.team01"
               android:layout_width="fill_parent"
               android:orientation="vertical"
               android:background="@drawable/screengeneral"
@@ -10,44 +11,26 @@
             android:layout_width="fill_parent"
             android:layout_height="100dip"     />
 
-    <TextView
+
+
+    <com.sparcedge.team01.TextViewPlus
         android:id="@+id/tvWhereTo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center|center_horizontal"
         android:textColor="@color/black"
-        android:text="Where are you going?"
+        android:text="Dude... where to?"
+        android:textSize="28dip"
+        foo:customFont="CabinCondensed-Medium.ttf"
         />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-    >
-        <TextView
-                android:id="@+id/tvCity"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:textColor="@color/black"
-                android:text="City:"
-                />
-        <TextView
-                android:id="@+id/tvState"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:textColor="@color/black"
-                android:text="State:"
-                />
-    </LinearLayout>
+
 
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="20dip"
             >
         <EditText
                 android:id="@+id/etCity"
@@ -71,88 +54,28 @@
                 />
     </LinearLayout>
 
-    <TextView
-            android:id="@+id/tvWhereTo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|center_horizontal"
-            android:textColor="@color/black"
-            android:text="-- or --"
-            />
 
-    <TextView
-            android:id="@+id/tvZip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dip"
-            android:layout_marginRight="10dip"
-            android:textColor="@color/black"
-            android:text="Zip:"
-            />
-    <EditText
-            android:id="@+id/etZip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dip"
-            android:layout_marginRight="10dip"
-            android:textColor="@color/black"
-            android:hint="Zip"
-            android:minWidth="100dip"
-            android:numeric="decimal"
-            />
-
-    <TextView
+    <com.sparcedge.team01.TextViewPlus
             android:id="@+id/tvWhenGo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
+            android:layout_marginTop="40dip"
             android:gravity="center|center_horizontal"
             android:textColor="@color/black"
-            android:text="When are you going?"
+            android:text="Dude... when?"
+            android:textSize="28dip"
+            foo:customFont="CabinCondensed-Medium.ttf"
             />
 
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-        <TextView
-                android:id="@+id/tvMonth"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:textColor="@color/black"
-                android:text="Month:"
-                />
-        <TextView
-                android:id="@+id/tvDay"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:textColor="@color/black"
-                android:text="Day:"
-                />
-        <TextView
-                android:id="@+id/tvYear"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:textColor="@color/black"
-                android:text="Year:"
-                />
-    </LinearLayout>
+
 
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="20dip"
             >
         <EditText
                 android:id="@+id/etMonth"
@@ -192,7 +115,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dip"
-        android:text="Submit"
+        android:background="@drawable/button_start_trippin"
         />
 
 

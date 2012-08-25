@@ -106,7 +106,7 @@ public class Screen5 extends ListActivity {
             name = holder.getName();
             name.setText(rowData);
             istat = holder.getIstat();
-            istat.setImageResource(R.drawable.trash);
+            istat.setImageResource(R.drawable.button_minus);
             return convertView;
         }
         private class ViewHolder {

@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:foo="http://schemas.android.com/apk/res/com.sparcedge.team01"
               android:layout_width="fill_parent"
               android:orientation="vertical"
               android:background="@drawable/grad_bg"
               android:layout_height="fill_parent">
 
 
-    <TextView
+    <com.sparcedge.team01.TextViewPlus
             android:id="@+id/tvWhereTo"
             android:layout_width="fill_parent"
             android:layout_margin="10dip"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="You should bring:"
+            android:textSize="28dip"
+            foo:customFont="CabinCondensed-Medium.ttf"
             />
 
     <ListView

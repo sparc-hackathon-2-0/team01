@@ -10,7 +10,6 @@
         android:id="@+id/tvWhereTo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
         android:gravity="center|center_horizontal"
         android:textColor="@color/black"
         android:text="Where are you going?"
@@ -70,7 +69,6 @@
             android:id="@+id/tvWhereTo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dip"
             android:gravity="center|center_horizontal"
             android:textColor="@color/black"
             android:text="-- or --"
@@ -175,7 +173,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnNewTrip"
+        android:id="@+id/btnSubmit"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dip"

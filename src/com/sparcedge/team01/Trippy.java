@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-public class Splash extends Activity {
+public class Trippy extends Activity {
 
     public static int MSG_TYPE_HIDESPLASH = 2000;
     public static int REQUEST_SCREEN2 = 4000;

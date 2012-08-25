@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="@drawable/isleofpalms"
+              android:background="@drawable/grad_bg"
         >
     <View android:id="@+id/spacer"
           android:layout_width="fill_parent"
@@ -12,8 +12,10 @@
           />
 
     <Button android:textColor="#FFFFFF"
-            android:id="@+id/logIn" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="Log In With Facebook"
+            android:id="@+id/logIn" android:layout_width="fill_parent"
+            android:layout_margin="40dip"
+            android:layout_height="wrap_content"
+            android:text="Log In With Facebook"
             android:layout_alignParentBottom="true"
             android:gravity="center_horizontal" android:layout_marginBottom="25dp"></Button>
 

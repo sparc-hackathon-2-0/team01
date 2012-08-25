@@ -26,6 +26,7 @@ public class Tripppy extends Activity {
 
     public static int MSG_TYPE_HIDESPLASH = 2000;
     public static int REQUEST_SCREEN2 = 4000;
+    public static int REQUEST_SCREEN3 = 4001;
     public static String TAG = "Tripppy";
     public static Boolean debug = false;
     public static Context mContext;
@@ -106,11 +107,14 @@ public class Tripppy extends Activity {
                 @Override
                 public void onFacebookError(FacebookError e) {
                     //To change body of implemented methods use File | Settings | File Templates.
+                    LOG("WTF 1: " + e.getMessage());
+
                 }
 
                 @Override
                 public void onError(DialogError e) {
                     //To change body of implemented methods use File | Settings | File Templates.
+                    LOG("WTF 2: " + e.getMessage());
                 }
 
                 @Override

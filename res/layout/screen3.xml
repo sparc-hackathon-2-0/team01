@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:orientation="vertical"
+              android:background="@drawable/grad_bg"
+              android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/tvWhereTo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:gravity="center|center_horizontal"
+        android:textColor="@color/black"
+        android:text="Where are you going?"
+        />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+    >
+        <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:text="City:"
+                />
+        <TextView
+                android:id="@+id/tvState"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:text="State:"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+        <EditText
+                android:id="@+id/etCity"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:hint="City"
+                />
+        <EditText
+                android:id="@+id/etState"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:hint="State"
+                />
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/tvWhereTo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:gravity="center|center_horizontal"
+            android:textColor="@color/black"
+            android:text="-- or --"
+            />
+
+    <TextView
+            android:id="@+id/tvZip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:textColor="@color/black"
+            android:text="Zip:"
+            />
+    <EditText
+            android:id="@+id/etZip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:textColor="@color/black"
+            android:hint="Zip"
+            android:minWidth="100dip"
+            android:numeric="decimal"
+            />
+
+    <TextView
+            android:id="@+id/tvWhenGo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:gravity="center|center_horizontal"
+            android:textColor="@color/black"
+            android:text="When are you going?"
+            />
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+        <TextView
+                android:id="@+id/tvMonth"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:text="Month:"
+                />
+        <TextView
+                android:id="@+id/tvDay"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:text="Day:"
+                />
+        <TextView
+                android:id="@+id/tvYear"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:text="Year:"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+        <EditText
+                android:id="@+id/etMonth"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:hint="Month"
+                />
+        <EditText
+                android:id="@+id/etDay"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:hint="Day"
+                />
+        <EditText
+                android:id="@+id/etYear"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:textColor="@color/black"
+                android:hint="Year"
+                android:text="2012"
+                />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNewTrip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dip"
+        android:text="Submit"
+        />
+
+
+
+
+</LinearLayout>

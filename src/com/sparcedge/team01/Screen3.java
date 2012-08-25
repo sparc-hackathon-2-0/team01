@@ -56,6 +56,9 @@ public class Screen3 extends Activity {
                       // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
                       new WxWOEIDTask().execute(city + "," + state);
 
+                    // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
+                    new WxWOEIDTask().execute(city + "," + state);
+
                 }
             });
         }

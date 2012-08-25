@@ -20,6 +20,7 @@
         <activity android:name=".Weather"/>
         <activity android:name=".Screen3"/>
         <activity android:name=".Screen5"/>
+        <activity android:name=".Screen7"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest> 

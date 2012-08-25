@@ -41,6 +41,12 @@ public class Tripppy extends Activity {
     String woeid = "29466";
     static String GSPREFS = "GS-prefs";
     static public Boolean first_time = true;
+    static public String[] any = {"shorts","pants","ID","hat","sweater","rain coat","phone","chargers","shoes","flip flops","laptop",
+            "water","dress clothes","underwear","batteries","fanny pack","sunglasses","watch","socks","beer","liquor"};
+    static public String[] beach = {"swimsuit","beach chair","aloe vera gel","beach ball","beach umbrella","beach towels","cooler",
+            "ice","fishing rod","beach games"};
+    static public String[] cold = {"jacket","thermal underwear","snow pants","toboggan","skiis","gloves","snow shoes","boots","goggles",
+            "earmuffs","lip balm"};
 
 
     /**

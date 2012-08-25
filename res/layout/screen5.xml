@@ -7,6 +7,23 @@
               android:layout_height="fill_parent">
 
 
+    <TextView
+            android:id="@+id/tvWhereTo"
+            android:layout_width="fill_parent"
+            android:layout_margin="10dip"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="You should bring:"
+            />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:textColor="@color/black"
+        />
+
+
     <Button
         android:id="@+id/btnNewTrip"
         android:layout_width="fill_parent"

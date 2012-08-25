@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,6 +45,7 @@ public class Tripppy extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mContext = this;
         currentActivity = this;
         wx = new Weather();
@@ -53,7 +55,7 @@ public class Tripppy extends Activity {
 
         progressDialog = ProgressDialog.show(Tripppy.this, "", "Getting Weather...", true);
         // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
-        new WxWOEIDTask().execute("Mt%20Pleasant,SC");
+        new WxWOEIDTask().execute("Folly%20Beach,SC");
     }
 
     public static void LOG(String s) {

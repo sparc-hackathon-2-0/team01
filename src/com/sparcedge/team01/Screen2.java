@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.Facebook;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,4 +101,5 @@ public class Screen2 extends Activity {
             Tripppy.db.addItemToTrip(itemInfo);
         }
     }
+
 }

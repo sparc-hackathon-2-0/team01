@@ -9,7 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.Facebook;
+import com.facebook.android.FacebookError;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +30,8 @@ import java.util.List;
 public class Screen3 extends Activity {
     public static int REQUEST_SCREEN5 = Tripppy.REQUEST_SCREEN5;
     ProgressDialog progressDialog = null;
+    public static String fbCity = "";
+    public static String fbState = "";
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,7 @@ public class Screen3 extends Activity {
         EditText etMonth = (EditText) findViewById(R.id.etMonth);
         EditText etDay = (EditText) findViewById(R.id.etDay);
         EditText etYear = (EditText) findViewById(R.id.etYear);
+
         Calendar now = Calendar.getInstance();
         Date dNow = now.getTime();
         etMonth.setText("" + (dNow.getMonth() + 1));
@@ -47,11 +56,15 @@ public class Screen3 extends Activity {
                 public void onClick(View v) {
 
                     String city = ((EditText)findViewById(R.id.etCity)).getText().toString().trim();
+                    fbCity = city;
                     String state = ((EditText)findViewById(R.id.etState)).getText().toString().trim();
+                    fbState = state;
                     city = city.replace(" ","%20");
                     if(city ==  null || city.equals("")) {
                         return;
                     }
+                    updateStatus(Tripppy.facebook.getAccessToken());
+
                     progressDialog = ProgressDialog.show(Screen3.this, "", "Getting Weather...", true);
                       // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
                       new WxWOEIDTask().execute(city + "," + state);
@@ -97,7 +110,7 @@ public class Screen3 extends Activity {
                 } catch (Exception e) {
                     temp = 80;
                 }
-                if (temp<55){
+                if (temp<65){
                     addColdItems();
                 }
                 else {
@@ -130,6 +143,45 @@ public class Screen3 extends Activity {
         }
         Tripppy.db.close();
     }
+
+    //updating Status
+    public void updateStatus(String accessToken){
+        Bundle bundle = new Bundle();
+        bundle.putString("message", "is planning a trip to " + fbCity+","+fbState);
+        bundle.putString(Facebook.TOKEN,accessToken);
+        AsyncFacebookRunner mAsyncFbRunner = new AsyncFacebookRunner(Tripppy.facebook);
+        mAsyncFbRunner.request("me/feed",bundle,"POST", new PostRequestListener(), null);
+    }
+
+    private final class PostRequestListener implements AsyncFacebookRunner.RequestListener {
+
+        @Override
+        public void onComplete(String response, Object state) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void onIOException(IOException e, Object state) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void onFileNotFoundException(FileNotFoundException e, Object state) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void onMalformedURLException(MalformedURLException e, Object state) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void onFacebookError(FacebookError e, Object state) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+    }
+
+
 
 
 }

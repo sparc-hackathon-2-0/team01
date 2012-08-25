@@ -78,13 +78,6 @@ public class DBAdapter {
         return db.insert(ITEM_INFO_TABLE, null, contentValues);
     }
 
-    //@DONE
-    public long addTrip(String trip) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(ITEM_NAME, trip);
-        return db.insert(TRIP_TABLE, null, contentValues);
-    }
-
 
 
     //@DONE
@@ -94,26 +87,6 @@ public class DBAdapter {
     }
 
 
-    public ArrayList<String> getTrips() {
-        ArrayList<String> lists = new ArrayList<String>();
-
-        Cursor cursor = db.rawQuery("select list from "+TRIP_TABLE, null);
-
-        if((cursor.getCount() == 0) || !cursor.moveToFirst()) {
-            cursor.close();
-            Tripppy.LOG("Crap. getTrips()");
-            return null;
-        }
-        cursor.moveToFirst();
-        while(cursor.isAfterLast() == false) {
-            String xlist = cursor.getString(0);
-            if(! lists.contains(xlist)) {
-                lists.add(xlist);
-            }
-            cursor.moveToNext();
-        }
-        return lists;
-    }
 
     //@DONE
     public ArrayList<ItemInfo> getItem(String name) {

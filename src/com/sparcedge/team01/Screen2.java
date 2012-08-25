@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.Facebook;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +62,6 @@ public class Screen2 extends Activity {
                                 Tripppy.current_trip_name = etName.getText().toString().trim();
                                 dlg.dismiss();
                                 Tripppy.db.open();
-                                Tripppy.db.addTrip(Tripppy.current_trip_name);
                                 List<ItemInfo> itemInfos = buildAnyItems(Tripppy.current_trip_name);
                                 addItemsToDb(itemInfos);
                                 Tripppy.db.close();
@@ -99,4 +100,5 @@ public class Screen2 extends Activity {
             Tripppy.db.addItemToTrip(itemInfo);
         }
     }
+
 }

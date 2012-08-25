@@ -3,11 +3,20 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:background="@drawable/isleofpalms"
         >
+    <View android:id="@+id/spacer"
+          android:layout_width="fill_parent"
+          android:layout_height="0dip"
+          android:layout_weight="2"
+          />
     <TextView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, Main"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:text="Facebook button goes here!"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
             />
 </LinearLayout>
 

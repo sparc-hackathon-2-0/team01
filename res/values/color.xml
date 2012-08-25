@@ -1,0 +1,6 @@
+<resources>
+        <color name="white">#ffffffff</color>
+        <color name="black">#ff000000</color>
+        <color name="blue">#1E90FF</color>
+        <color name="navy">#000080</color>
+</resources>

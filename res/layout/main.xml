@@ -9,20 +9,68 @@
     <View android:id="@+id/spacer"
     android:layout_width="fill_parent"
     android:layout_height="0dip"
-    android:layout_weight="8"
+    android:layout_weight="9"
     />
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginTop="20dip"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="5dip"
+        android:text="Already have an account?"
+        android:textColor="@color/black" />
+
 
     <Button android:textColor="#FFFFFF"
             android:id="@+id/logIn"
             android:layout_width="fill_parent"
-            android:layout_margin="40dip"
+            android:layout_marginLeft="40dip"
+            android:layout_marginRight="40dip"
+            android:layout_marginBottom="10dip"
             android:layout_weight="1"
             android:layout_height="0dip"
             android:text="Log In With Facebook"
             android:layout_alignParentBottom="true"
             android:gravity="center|center_horizontal"
-            android:background="@color/navy"
-            android:layout_marginBottom="25dp"></Button>
+            android:background="@color/navy"   />
+
+    <Button android:textColor="#FFFFFF"
+            android:id="@+id/logIn2"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="40dip"
+            android:layout_marginRight="40dip"
+            android:layout_marginBottom="10dip"
+            android:layout_weight="1"
+            android:layout_height="0dip"
+            android:text="sign in with email"
+            android:layout_alignParentBottom="true"
+            android:gravity="center|center_horizontal"
+            android:background="#aaf"  />
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_margin="5dip"
+            android:text="New User?"
+            android:textColor="@color/black" />
+
+    <Button android:textColor="#FFFFFF"
+            android:id="@+id/logIn2"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="40dip"
+            android:layout_marginRight="40dip"
+            android:layout_marginBottom="10dip"
+            android:layout_weight="1"
+            android:layout_height="0dip"
+            android:text="register for Trippy!"
+            android:layout_alignParentBottom="true"
+            android:gravity="center|center_horizontal"
+            android:background="#aaf"  />
 
     <View android:id="@+id/spacer"
           android:layout_width="fill_parent"

@@ -34,11 +34,12 @@ public class DBAdapter {
             ITEM_INFO_TABLE + " (" + KEY_ID +
             " integer primary key autoincrement, " +
             TRIP_NAME + " string not null, " +
-            ITEM_NAME + " string not null);"+
-            "create table " +
+            ITEM_NAME + " string not null)";
+
+    private static final String TRIP_CREATE = "create table " +
             TRIP_TABLE + " (" + KEY_ID +
             " integer primary key autoincrement, " +
-            TRIP_NAME + " string not null, ";
+            TRIP_NAME + " string not null)";
 
     // var to hold db instance
     private SQLiteDatabase db;
@@ -149,10 +150,44 @@ public class DBAdapter {
     }
 
     //@DONE
+    public ArrayList<ItemInfo> getItem() {
+        ArrayList<ItemInfo> list = new ArrayList<ItemInfo>();
+
+        Cursor cursor = db.rawQuery("select * from "+ITEM_INFO_TABLE, null);
+
+        if((cursor.getCount() == 0) || !cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false) {
+            String trip = "";
+            try {
+                trip = cursor.getString(TRIP_COLUMN);
+            } catch (Exception e) {}
+            String item = "";
+            try {
+                item = cursor.getString(ITEM_COLUMN);
+            } catch (Exception e) {}
+
+            ItemInfo i = new ItemInfo(trip,item);
+            list.add(i);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
+    }
+
+
+    //@DONE
     public void wipetable() {
         db.execSQL("DROP TABLE IF EXISTS " + ITEM_INFO_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + TRIP_TABLE);
         db.execSQL(DATABASE_CREATE);
+        db.execSQL(TRIP_CREATE);
+
     }
 
 //    //@DONE
@@ -175,6 +210,7 @@ public class DBAdapter {
         @Override
         public void onCreate(SQLiteDatabase _db) {
             _db.execSQL(DATABASE_CREATE);
+            _db.execSQL(TRIP_CREATE);
         }
 
         // called when there is a db version mismatch meaning that

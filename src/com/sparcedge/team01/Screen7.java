@@ -11,10 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,29 +20,18 @@ import java.util.Vector;
  * Time: 2:39 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Screen5 extends ListActivity {
+public class Screen7 extends ListActivity {
     private LayoutInflater mInflater;
     private Vector<String> data;
     public static int REQUEST_SCREEN2 = Tripppy.REQUEST_SCREEN2;
 
     String rd;
-    static final String[] items =
-            new String[] { "underwear", "dress clothes" , "DVDs", "water", "money" };
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.screen5);
+        setContentView(R.layout.screen7);
         refreshList();
-
-        Button btnSaveTrip = (Button) findViewById(R.id.btnSaveTrip);
-        btnSaveTrip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sndMsgIntent4 = new Intent(Tripppy.mContext, Screen2.class);
-                startActivityForResult(sndMsgIntent4, REQUEST_SCREEN2);
-            }
-        });
 
 
     }
@@ -57,17 +43,10 @@ public class Screen5 extends ListActivity {
         data = new Vector<String>();
         ArrayList<String> d = new ArrayList<String>();
 
-        Tripppy.db.open();
-        List<ItemInfo> itemInfos = Tripppy.db.getItem(Tripppy.current_trip_name);
+        List<String> trips = getTrips();;
 
-        List<String> items = new ArrayList<String>();
-        for (ItemInfo itemInfo: itemInfos){
-            items.add(itemInfo.getItemName());
-        }
-
-
-        for (String s : items) {
-            Tripppy.LOG("Adding item: " + s);
+        for (String s : trips) {
+            Tripppy.LOG("Adding trip: " + s);
             data.add(s);
             d.add(s);
         }
@@ -79,20 +58,15 @@ public class Screen5 extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Tripppy.db.open();
-        List<ItemInfo> itemInfos = Tripppy.db.getItem(Tripppy.current_trip_name);
-        Tripppy.db.removeItemFromTrip(itemInfos.get(position));
-        Tripppy.db.close();
-        refreshList();
+//        Tripppy.db.open();
+//        List<ItemInfo> itemInfos = Tripppy.db.getTrips();
+//        Tripppy.db.removeItemFromTrip(itemInfos.get(position));
+//        Tripppy.db.close();
+//        refreshList();
         Tripppy.LOG("Adding item: ");
     }
 
 
-    private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-            Tripppy.LOG( "Touched item item");
-        }
-    };
 
     private class CustomAdapter extends ArrayAdapter<String> {
 
@@ -117,7 +91,7 @@ public class Screen5 extends ListActivity {
             name = holder.getName();
             name.setText(rowData);
             istat = holder.getIstat();
-            istat.setImageResource(R.drawable.button_minus);
+            istat.setImageResource(R.drawable.trash);
             return convertView;
         }
         private class ViewHolder {
@@ -142,6 +116,19 @@ public class Screen5 extends ListActivity {
                 return istat;
             }
         }
+    }
+
+    private List<String> getTrips(){
+        Tripppy.db.open();
+        List<ItemInfo> itemInfos = Tripppy.db.getItem();
+        Tripppy.db.close();
+        Set<String> set = new HashSet<String>();
+        for(ItemInfo itemInfo : itemInfos){
+            set.add(itemInfo.getItemName());
+        }
+        List<String> results = new ArrayList<String>();
+        results.addAll(set);
+        return results;
     }
 
 }

@@ -2,6 +2,7 @@ package com.sparcedge.team01;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -33,6 +34,13 @@ public class Screen2 extends Activity {
 
         Button btnNewTrip = (Button) findViewById(R.id.btnNewTrip);
         Button btnOldTrip = (Button) findViewById(R.id.btnOldTrip);
+
+        btnOldTrip.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent sndMsgIntent4 = new Intent(mContext, Screen7.class);
+                startActivityForResult(sndMsgIntent4, Tripppy.REQUEST_SCREEN7);
+            }
+        });
 
         if(btnNewTrip != null) {
             btnNewTrip.setOnClickListener(new View.OnClickListener() {

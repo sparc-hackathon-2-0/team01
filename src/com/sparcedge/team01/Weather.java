@@ -43,12 +43,40 @@ public class Weather extends Activity {
     protected static CookieStore cookieStore = new BasicCookieStore();
 
     Weather() {
-        Trippy.LOG("Creating cookie store...");
+        Tripppy.LOG("Creating cookie store...");
         localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    public String getForecast(String woeid) {
+        String URL = "http://weather.yahooapis.com/forecastrss?w=" + woeid;
+        Tripppy.LOG("forecast URL: " + URL);
+
+        try {
+            BufferedReader in = null;
+            HttpClient client = new DefaultHttpClient();
+            HttpGet request = new HttpGet();
+            request.setURI(new URI(URL));
+            HttpResponse response = client.execute(request, localContext);
+            in = new BufferedReader
+                    (new InputStreamReader(response.getEntity().getContent()));
+            StringBuffer sb = new StringBuffer("");
+            String line = "";
+            String NL = System.getProperty("line.separator");
+            while ((line = in.readLine()) != null) {
+                sb.append(line + NL);
+            }
+            in.close();
+
+            String page = sb.toString();
+            Tripppy.LOG(page);
+            //<woeid>12770203</woeid>
+            woeid = findPattern(page, "<woeid>(\\d+)</", 1);
+        } catch (Exception e) { Tripppy.LOG("Exception occurred while fetching WOEID: " + e.getMessage());}
+        return woeid;
     }
 
     public String getWOEID(String place) {
@@ -76,7 +104,7 @@ public class Weather extends Activity {
             String page = sb.toString();
             //<woeid>12770203</woeid>
             woeid = findPattern(page, "<woeid>(\\d+)</", 1);
-        } catch (Exception e) { Trippy.LOG("Exception occurred while fetching WOEID: " + e.getMessage());}
+        } catch (Exception e) { Tripppy.LOG("Exception occurred while fetching WOEID: " + e.getMessage());}
         return woeid;
     }
 
@@ -101,7 +129,7 @@ public class Weather extends Activity {
             String page = sb.toString();
             vs = findPattern(page, "__VIEWSTATE\" value=\"(.*)\"", 1);
             vs = vs.split(" ")[0].replaceAll("\"", "");
-        } catch (Exception e) { Trippy.LOG("Exception occurred while fetching viewState: " + e.getMessage());}
+        } catch (Exception e) { Tripppy.LOG("Exception occurred while fetching viewState: " + e.getMessage());}
         return vs;
     }
 
@@ -114,12 +142,12 @@ public class Weather extends Activity {
                 if(groupNum <= m.groupCount()) {
                     result = m.group(groupNum);
                 } else {
-                    Trippy.LOG("findPattern::Group not found!");
+                    Tripppy.LOG("findPattern::Group not found!");
                 }
             }
         }
         catch (Exception e) {
-            Trippy.LOG(e.getMessage());
+            Tripppy.LOG(e.getMessage());
         }
         return result;
     }

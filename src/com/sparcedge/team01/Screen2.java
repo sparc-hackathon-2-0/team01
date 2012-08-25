@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: stevewoodruff
@@ -48,6 +51,13 @@ public class Screen2 extends Activity {
                             if(etName != null) {
                                 Tripppy.current_trip_name = etName.getText().toString().trim();
                                 dlg.dismiss();
+                                Tripppy.db.open();
+                                Tripppy.db.addTrip(Tripppy.current_trip_name);
+                                List<ItemInfo> itemInfos = buildAnyItems(Tripppy.current_trip_name);
+                                addItemsToDb(itemInfos);
+                                Tripppy.db.close();
+
+                                addItemsToDb(itemInfos);
                                 Intent sndMsgIntent4 = new Intent(Tripppy.mContext, Screen3.class);
                                 startActivityForResult(sndMsgIntent4, REQUEST_SCREEN3);
                             }
@@ -62,5 +72,23 @@ public class Screen2 extends Activity {
 
 
 
+    }
+
+    private List<ItemInfo> buildAnyItems(String trip){
+        List<ItemInfo> itemInfos = new ArrayList<ItemInfo>();
+        for (String item : Tripppy.any){
+            ItemInfo itemInfo = new ItemInfo();
+            itemInfo.setItem_name(item);
+            itemInfo.setTrip_name(trip);
+            itemInfos.add(itemInfo);
+        }
+        return itemInfos;
+    }
+
+    private void addItemsToDb(List<ItemInfo> itemInfos){
+        for(ItemInfo itemInfo: itemInfos){
+            Tripppy.db.open();
+            Tripppy.db.addItemToTrip(itemInfo);
+        }
     }
 }

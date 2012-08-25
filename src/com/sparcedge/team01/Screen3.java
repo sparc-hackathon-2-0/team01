@@ -8,6 +8,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,8 +34,12 @@ public class Screen3 extends Activity {
             btnSubmit.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     progressDialog = ProgressDialog.show(Screen3.this, "", "Getting Weather...", true);
+                    String city = ((EditText)findViewById(R.id.etCity)).getText().toString().trim();
+                    String state = ((EditText)findViewById(R.id.etState)).getText().toString().trim();
+                    city = city.replace(" ","%20");
+
                     // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
-                    new WxWOEIDTask().execute("Folly%20Beach,SC");
+                    new WxWOEIDTask().execute(city + "," + state);
 
                 }
             });
@@ -66,6 +73,13 @@ public class Screen3 extends Activity {
                 // we got it
                 Tripppy.LOG("WOEID: " + Tripppy.woeid);
                 Tripppy.LOG("Temp: " + Tripppy.wx.getTemp());
+                int temp = Integer.parseInt(Tripppy.wx.getTemp());
+                if (temp<55){
+                    addColdItems();
+                }
+                else {
+                    addWarmItems();
+                }
                 Intent sndMsgIntent4 = new Intent(Tripppy.mContext, Screen5.class);
                 startActivityForResult(sndMsgIntent4, REQUEST_SCREEN5);
             }
@@ -75,5 +89,24 @@ public class Screen3 extends Activity {
             }
         }
     }
+
+    private void addColdItems(){
+        Tripppy.db.open();
+        for(String item : Tripppy.cold){
+            ItemInfo itemInfo = new ItemInfo(Tripppy.current_trip_name,item);
+            Tripppy.db.addItemToTrip(itemInfo);
+        }
+        Tripppy.db.close();
+    }
+
+    private void addWarmItems(){
+        Tripppy.db.open();
+        for(String item : Tripppy.beach){
+            ItemInfo itemInfo = new ItemInfo(Tripppy.current_trip_name,item);
+            Tripppy.db.addItemToTrip(itemInfo);
+        }
+        Tripppy.db.close();
+    }
+
 
 }

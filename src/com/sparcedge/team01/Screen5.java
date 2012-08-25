@@ -57,8 +57,16 @@ public class Screen5 extends ListActivity {
         data = new Vector<String>();
         ArrayList<String> d = new ArrayList<String>();
 
+        Tripppy.db.open();
+        List<ItemInfo> itemInfos = Tripppy.db.getItem(Tripppy.current_trip_name);
 
-        for (String s : Tripppy.any) {
+        List<String> items = new ArrayList<String>();
+        for (ItemInfo itemInfo: itemInfos){
+            items.add(itemInfo.getItemName());
+        }
+
+
+        for (String s : items) {
             Tripppy.LOG("Adding item: " + s);
             data.add(s);
             d.add(s);

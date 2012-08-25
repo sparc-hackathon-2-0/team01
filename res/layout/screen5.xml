@@ -33,11 +33,7 @@
         android:id="@+id/btnSaveTrip"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dip"
-        android:layout_marginRight="40dip"
-        android:layout_marginBottom="5dip"
-        android:layout_marginTop="5dip"
-        android:text="Save Trip"
+        android:background="@drawable/button_save_that_shit_screen5"
         />
 
 

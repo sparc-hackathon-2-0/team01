@@ -27,6 +27,7 @@ public class Tripppy extends Activity {
     public static int MSG_TYPE_HIDESPLASH = 2000;
     public static int REQUEST_SCREEN2 = 4000;
     public static int REQUEST_SCREEN3 = 4001;
+    public static int REQUEST_SCREEN5 = 4002;
     public static String TAG = "Tripppy";
     public static Boolean debug = false;
     public static Context mContext;

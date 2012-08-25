@@ -38,6 +38,7 @@ public class Tripppy extends Activity {
     public static Activity currentActivity = new Activity();
     public static DBAdapter db = null;
     Weather wx = null;
+    public static String current_trip_name = "default";
     ProgressDialog progressDialog = null;
     String woeid = "29466";
     static String GSPREFS = "GS-prefs";
@@ -68,7 +69,7 @@ public class Tripppy extends Activity {
 
         progressDialog = ProgressDialog.show(Tripppy.this, "", "Getting Weather...", true);
         // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
-        new WxWOEIDTask().execute("Folly%20Beach,SC");
+        //new WxWOEIDTask().execute("Folly%20Beach,SC");
     }
 
     public static void LOG(String s) {

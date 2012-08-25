@@ -56,7 +56,7 @@ public class Screen2 extends Activity {
                         @Override
                         public void onClick(View v) {
                             EditText etName = (EditText) dlg.findViewById(R.id.etTripName);
-                            if(etName != null) {
+                            if(etName != null && !etName.getText().toString().trim().equals("")) {
                                 Tripppy.current_trip_name = etName.getText().toString().trim();
                                 dlg.dismiss();
                                 Tripppy.db.open();

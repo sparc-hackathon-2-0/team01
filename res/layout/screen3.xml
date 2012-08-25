@@ -9,7 +9,7 @@
 
     <View
             android:layout_width="fill_parent"
-            android:layout_height="100dip"     />
+            android:layout_height="150dip"     />
 
 
 
@@ -17,11 +17,11 @@
         android:id="@+id/tvWhereTo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center|center_horizontal"
+        android:layout_marginLeft="10dip"
         android:textColor="@color/black"
-        android:text="Dude... where to?"
-        android:textSize="28dip"
-        foo:customFont="CabinCondensed-Medium.ttf"
+        android:text="Dude...where to?"
+        android:textSize="38dip"
+        foo:customFont="CabinCondensed-Bold.ttf"
         />
 
 
@@ -40,7 +40,9 @@
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
-                android:hint="City"
+                android:hint=" City"
+                android:textSize="24dip"
+                android:background="@drawable/rounded_edittext"
                 />
         <EditText
                 android:id="@+id/etState"
@@ -50,7 +52,9 @@
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
-                android:hint="State"
+                android:hint=" State"
+                android:textSize="24dip"
+                android:background="@drawable/rounded_edittext"
                 />
     </LinearLayout>
 
@@ -62,11 +66,10 @@
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
             android:layout_marginTop="40dip"
-            android:gravity="center|center_horizontal"
             android:textColor="@color/black"
-            android:text="Dude... when?"
-            android:textSize="28dip"
-            foo:customFont="CabinCondensed-Medium.ttf"
+            android:text="Dude...when?"
+            android:textSize="39dip"
+            foo:customFont="CabinCondensed-Bold.ttf"
             />
 
 
@@ -85,7 +88,9 @@
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
-                android:hint="Month"
+                android:hint=" Month"
+                android:textSize="24dip"
+                android:background="@drawable/rounded_edittext"
                 />
         <EditText
                 android:id="@+id/etDay"
@@ -95,7 +100,9 @@
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
-                android:hint="Day"
+                android:hint=" Day"
+                android:textSize="24dip"
+                android:background="@drawable/rounded_edittext"
                 />
         <EditText
                 android:id="@+id/etYear"
@@ -107,14 +114,16 @@
                 android:textColor="@color/black"
                 android:hint="Year"
                 android:text="2012"
+                android:textSize="24dip"
+                android:background="@drawable/rounded_edittext"
                 />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="40dip"
+        android:layout_marginTop="20dip"
         android:background="@drawable/button_start_trippin"
         />
 

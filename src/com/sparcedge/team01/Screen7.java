@@ -31,7 +31,10 @@ public class Screen7 extends ListActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.screen7);
-        refreshList();
+
+        try {
+            refreshList();
+        }catch (Exception e) {}
 
 
     }
@@ -91,7 +94,7 @@ public class Screen7 extends ListActivity {
             name = holder.getName();
             name.setText(rowData);
             istat = holder.getIstat();
-            istat.setImageResource(R.drawable.trash);
+            istat.setImageResource(R.drawable.button_arrow);
             return convertView;
         }
         private class ViewHolder {

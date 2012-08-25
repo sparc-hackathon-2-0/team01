@@ -4,9 +4,14 @@
               xmlns:foo="http://schemas.android.com/apk/res/com.sparcedge.team01"
               android:layout_width="fill_parent"
               android:orientation="vertical"
-              android:background="@drawable/grad_bg"
+              android:background="@drawable/screengeneral"
               android:layout_height="fill_parent">
 
+
+    <View
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            />
 
     <com.sparcedge.team01.TextViewPlus
             android:id="@+id/tvWhereTo"
@@ -15,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Bring these bro:"
-            android:textSize="28dip"
+            android:textSize="40dip"
             foo:customFont="CabinCondensed-Medium.ttf"
             />
 
@@ -31,7 +36,7 @@
 
     <Button
         android:id="@+id/btnSaveTrip"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_save_that_shit_screen5"
         />

@@ -33,13 +33,16 @@ public class Screen3 extends Activity {
         if(btnSubmit != null) {
             btnSubmit.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    progressDialog = ProgressDialog.show(Screen3.this, "", "Getting Weather...", true);
+
                     String city = ((EditText)findViewById(R.id.etCity)).getText().toString().trim();
                     String state = ((EditText)findViewById(R.id.etState)).getText().toString().trim();
                     city = city.replace(" ","%20");
-
-                    // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
-                    new WxWOEIDTask().execute(city + "," + state);
+                    if(city ==  null || city.equals("")) {
+                        return;
+                    }
+                    progressDialog = ProgressDialog.show(Screen3.this, "", "Getting Weather...", true);
+                      // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
+                      new WxWOEIDTask().execute(city + "," + state);
 
                 }
             });

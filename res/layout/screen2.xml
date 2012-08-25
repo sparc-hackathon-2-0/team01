@@ -9,22 +9,20 @@
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="100dip"     />
+        android:layout_height="140dip"     />
 
     <Button
-        android:id="@+id/btnNewTrip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dip"
-        android:text="Create New Trip"
-        />
+            android:id="@+id/btnNewTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_create_a_new_trip"
+            />
 
     <Button
             android:id="@+id/btnOldTrip"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="40dip"
-            android:text="See Saved Trip"
+            android:background="@drawable/button_see_old_trip"
             />
 
 

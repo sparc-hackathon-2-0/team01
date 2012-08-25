@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +23,7 @@ import com.facebook.android.FacebookError;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 public class Tripppy extends Activity {
 
@@ -34,9 +36,19 @@ public class Tripppy extends Activity {
     public static Context mContext;
     public static Facebook facebook = new Facebook("147306792075631");
     public static Activity currentActivity = new Activity();
+    public static DBAdapter db = null;
     Weather wx = null;
     ProgressDialog progressDialog = null;
     String woeid = "29466";
+    static String GSPREFS = "GS-prefs";
+    static public Boolean first_time = true;
+    static public String[] any = {"shorts","pants","ID","hat","sweater","rain coat","phone","chargers","shoes","flip flops","laptop",
+            "water","dress clothes","underwear","batteries","fanny pack","sunglasses","watch","socks","beer","liquor"};
+    static public String[] beach = {"swimsuit","beach chair","aloe vera gel","beach ball","beach umbrella","beach towels","cooler",
+            "ice","fishing rod","beach games"};
+    static public String[] cold = {"jacket","thermal underwear","snow pants","toboggan","skiis","gloves","snow shoes","boots","goggles",
+            "earmuffs","lip balm"};
+
 
     /**
      * Called when the activity is first created.
@@ -49,6 +61,7 @@ public class Tripppy extends Activity {
         mContext = this;
         currentActivity = this;
         wx = new Weather();
+        db = new DBAdapter(this);
 
         Button confirmButton = (Button)findViewById(R.id.logIn);
         confirmButton.setOnClickListener(loginListener);
@@ -102,9 +115,14 @@ public class Tripppy extends Activity {
             facebook.authorize(currentActivity,new String[] {"publish_stream"},new Facebook.DialogListener() {
                 @Override
                 public void onComplete(Bundle values) {
-                    updateStatus(values.getString(Facebook.TOKEN));
+                    loadPreferences();
+                    if(first_time){
+                        updateStatus(values.getString(Facebook.TOKEN));
+                    }
                     Intent sndMsgIntent4 = new Intent(mContext, Screen2.class);
                     startActivityForResult(sndMsgIntent4, REQUEST_SCREEN2);
+                    first_time = false;
+                    savePreferences();
                 }
 
                 @Override
@@ -132,7 +150,7 @@ public class Tripppy extends Activity {
     //updating Status
     public void updateStatus(String accessToken){
         Bundle bundle = new Bundle();
-        bundle.putString("message", "is now Tripping!!!");
+        bundle.putString("message", "is now gettin TRIPPPY!!!");
         bundle.putString(Facebook.TOKEN,accessToken);
         AsyncFacebookRunner mAsyncFbRunner = new AsyncFacebookRunner(facebook);
         mAsyncFbRunner.request("me/feed",bundle,"POST", new PostRequestListener(), null);
@@ -219,5 +237,20 @@ public class Tripppy extends Activity {
             }
         }
     }
+
+    public void savePreferences() {
+        SharedPreferences mySharedPrefs = getSharedPreferences(GSPREFS,
+                Activity.MODE_WORLD_WRITEABLE);
+        SharedPreferences.Editor editor = mySharedPrefs.edit();
+        editor.putBoolean("first_time", first_time);
+        editor.commit();
+    }
+
+    public void loadPreferences() {
+        SharedPreferences mySharedPrefs = getSharedPreferences(GSPREFS,
+                Activity.MODE_WORLD_WRITEABLE);
+        first_time = mySharedPrefs.getBoolean("first_time", true);
+    }
+
 
 }

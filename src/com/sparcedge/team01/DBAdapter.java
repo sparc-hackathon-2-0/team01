@@ -25,9 +25,9 @@ public class DBAdapter {
 
     // The name and column index of each column in your database
     public static final String TRIP_NAME="tripName";
-    public static final int TRIP_COLUMN = 1;
+    public static final int TRIP_COLUMN = 0;
     public static final String ITEM_NAME="itemName";
-    public static final int ITEM_COLUMN = 2;
+    public static final int ITEM_COLUMN = 1;
 
     // SQL to create a new db
     private static final String DATABASE_CREATE = "create table " +

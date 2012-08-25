@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <application android:label="@string/app_name">
-        <activity android:name=".Trippy"
+        <activity android:name=".Tripppy"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,4 +19,5 @@
         <activity android:name=".Screen2"/>
         <activity android:name=".Weather"/>
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest> 

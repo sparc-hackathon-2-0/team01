@@ -47,7 +47,7 @@ public class Screen5 extends ListActivity {
         ArrayList<String> d = new ArrayList<String>();
 
 
-        for (String s : items) {
+        for (String s : Tripppy.any) {
             Tripppy.LOG("Adding item: " + s);
             data.add(s);
             d.add(s);

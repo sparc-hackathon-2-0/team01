@@ -67,7 +67,7 @@ public class Tripppy extends Activity {
         Button confirmButton = (Button)findViewById(R.id.logIn);
         confirmButton.setOnClickListener(loginListener);
 
-        progressDialog = ProgressDialog.show(Tripppy.this, "", "Getting Weather...", true);
+        //progressDialog = ProgressDialog.show(Tripppy.this, "", "Getting Weather...", true);
         // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
         //new WxWOEIDTask().execute("Folly%20Beach,SC");
     }

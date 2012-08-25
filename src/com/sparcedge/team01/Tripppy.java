@@ -21,6 +21,7 @@ import com.facebook.android.FacebookError;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 public class Tripppy extends Activity {
 
@@ -32,6 +33,7 @@ public class Tripppy extends Activity {
     public static Context mContext;
     public static Facebook facebook = new Facebook("147306792075631");
     public static Activity currentActivity = new Activity();
+    public static DBAdapter db = null;
     Weather wx = null;
     ProgressDialog progressDialog = null;
     String woeid = "29466";
@@ -46,6 +48,7 @@ public class Tripppy extends Activity {
         mContext = this;
         currentActivity = this;
         wx = new Weather();
+        db = new DBAdapter(this);
 
         Button confirmButton = (Button)findViewById(R.id.logIn);
         confirmButton.setOnClickListener(loginListener);
@@ -129,7 +132,7 @@ public class Tripppy extends Activity {
     //updating Status
     public void updateStatus(String accessToken){
         Bundle bundle = new Bundle();
-        bundle.putString("message", "is now Tripping!!!");
+        bundle.putString("message", "is now gettin TRIPPPY!!!");
         bundle.putString(Facebook.TOKEN,accessToken);
         AsyncFacebookRunner mAsyncFbRunner = new AsyncFacebookRunner(facebook);
         mAsyncFbRunner.request("me/feed",bundle,"POST", new PostRequestListener(), null);

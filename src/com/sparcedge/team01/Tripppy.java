@@ -37,10 +37,9 @@ public class Tripppy extends Activity {
     public static Facebook facebook = new Facebook("147306792075631");
     public static Activity currentActivity = new Activity();
     public static DBAdapter db = null;
-    Weather wx = null;
+    public static Weather wx = null;
     public static String current_trip_name = "default";
-    ProgressDialog progressDialog = null;
-    String woeid = "29466";
+    public static String woeid = "29466";
     static String GSPREFS = "GS-prefs";
     static public Boolean first_time = true;
     static public String[] any = {"shorts","pants","ID","hat","sweater","rain coat","phone","chargers","shoes","flip flops","laptop",
@@ -67,9 +66,7 @@ public class Tripppy extends Activity {
         Button confirmButton = (Button)findViewById(R.id.logIn);
         confirmButton.setOnClickListener(loginListener);
 
-        //progressDialog = ProgressDialog.show(Tripppy.this, "", "Getting Weather...", true);
-        // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded
-        //new WxWOEIDTask().execute("Folly%20Beach,SC");
+
     }
 
     public static void LOG(String s) {
@@ -205,39 +202,6 @@ public class Tripppy extends Activity {
         }
     }
 
-    class WxWOEIDTask extends AsyncTask<String, Void, Boolean> {
-        private Exception exception;
-
-        protected Boolean doInBackground(String... args) {
-            try {
-                LOG("Get woeid for: " + args[0]);
-                woeid = wx.getWOEID(args[0]);
-                String hmm = wx.getForecast(woeid);
-                LOG("Got forecast: " + hmm);
-            } catch (Exception e) {
-                this.exception = e;
-                return null;
-            }
-            return true;
-        }
-
-        protected void onPostExecute(Boolean result) {
-            try {
-                progressDialog.dismiss();
-            } catch (Exception e) {}
-            if(result == null) {
-                LOG("An error occurred: " + exception.getMessage());
-            }
-            else if(result) {
-                // we got it
-                LOG("WOEID: " + woeid);
-            }
-            else {
-
-                showOKAlertMsg("Whoops!", "Failed to fetch weather data: Try again.", false);
-            }
-        }
-    }
 
     public void savePreferences() {
         SharedPreferences mySharedPrefs = getSharedPreferences(GSPREFS,

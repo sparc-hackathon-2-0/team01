@@ -39,6 +39,8 @@ import java.util.regex.Pattern;
  */
 public class Weather extends Activity {
 
+    String temp = "80";
+
     protected static HttpContext localContext = new BasicHttpContext();
     protected static CookieStore cookieStore = new BasicCookieStore();
 
@@ -46,6 +48,8 @@ public class Weather extends Activity {
         Tripppy.LOG("Creating cookie store...");
         localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
     }
+
+    public String getTemp() { return temp; }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +79,7 @@ public class Weather extends Activity {
             String page = sb.toString();
             Tripppy.LOG(page);
             code = findPattern(page, "text=\"(.+)\" code=", 1);
+            temp = findPattern(page, "high=\"(\\d+)\"", 1);
         } catch (Exception e) { Tripppy.LOG("Exception occurred while fetching forecast: " + e.getMessage());}
         return code;
     }

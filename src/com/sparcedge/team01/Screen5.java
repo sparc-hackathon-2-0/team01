@@ -23,8 +23,6 @@ import java.util.Vector;
  * To change this template use File | Settings | File Templates.
  */
 public class Screen5 extends ListActivity {
-    private ArrayAdapter<String> mNewDevicesArrayAdapter;
-    ListView newDevicesListView = null;
     private LayoutInflater mInflater;
     private Vector<String> data;
     String rd;

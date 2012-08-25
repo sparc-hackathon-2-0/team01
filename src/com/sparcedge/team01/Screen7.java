@@ -6,9 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 
 import java.util.*;
@@ -24,6 +22,7 @@ public class Screen7 extends ListActivity {
     private LayoutInflater mInflater;
     private Vector<String> data;
     public static int REQUEST_SCREEN2 = Tripppy.REQUEST_SCREEN2;
+    Menu menu = null;
 
     String rd;
 
@@ -132,6 +131,35 @@ public class Screen7 extends ListActivity {
         List<String> results = new ArrayList<String>();
         results.addAll(set);
         return results;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.layout.menu, menu);
+        return true;
+    }
+
+    /**
+     * Event Handling for Individual menu item selected
+     * Identify single menu item by it's id
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch (item.getItemId())
+        {
+            case R.id.add:
+                // Single menu item is selected do something
+                // Ex: launching new activity/screen or show alert message
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

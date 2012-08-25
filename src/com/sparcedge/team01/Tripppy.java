@@ -187,6 +187,7 @@ public class Tripppy extends Activity {
                 LOG("Get woeid for: " + args[0]);
                 woeid = wx.getWOEID(args[0]);
                 String hmm = wx.getForecast(woeid);
+                LOG("Got forecast: " + hmm);
             } catch (Exception e) {
                 this.exception = e;
                 return null;

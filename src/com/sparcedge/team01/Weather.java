@@ -54,6 +54,7 @@ public class Weather extends Activity {
     public String getForecast(String woeid) {
         String URL = "http://weather.yahooapis.com/forecastrss?w=" + woeid;
         Tripppy.LOG("forecast URL: " + URL);
+        String code = "1";
 
         try {
             BufferedReader in = null;
@@ -73,10 +74,9 @@ public class Weather extends Activity {
 
             String page = sb.toString();
             Tripppy.LOG(page);
-            //<woeid>12770203</woeid>
-            woeid = findPattern(page, "<woeid>(\\d+)</", 1);
-        } catch (Exception e) { Tripppy.LOG("Exception occurred while fetching WOEID: " + e.getMessage());}
-        return woeid;
+            code = findPattern(page, "text=\"(.+)\" code=", 1);
+        } catch (Exception e) { Tripppy.LOG("Exception occurred while fetching forecast: " + e.getMessage());}
+        return code;
     }
 
     public String getWOEID(String place) {

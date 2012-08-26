@@ -46,7 +46,6 @@
                 android:paddingLeft="10dip"
                 android:textColor="@color/black"
                 android:hint=" City"
-                android:text="foo"
                 android:textSize="24dip"
                 android:background="@drawable/rounded_edittext"
                 />

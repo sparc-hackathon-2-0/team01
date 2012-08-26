@@ -38,6 +38,8 @@ public class Screen7 extends ListActivity {
 
     }
 
+
+
     public void refreshList() {
 
         mInflater = (LayoutInflater) getSystemService(
@@ -60,12 +62,15 @@ public class Screen7 extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-//        Tripppy.db.open();
-//        List<ItemInfo> itemInfos = Tripppy.db.getTrips();
-//        Tripppy.db.removeItemFromTrip(itemInfos.get(position));
+        Tripppy.db.open();
+        String info = ((TextView)((LinearLayout) v).getChildAt(1)).getText().toString().trim();
+        Tripppy.LOG("trip name is: " + info);
+//        List<ItemInfo> itemInfos = Tripppy.db.getItem(info);
+//        ArrayList<ItemInfo> trip_stuff = Tripppy.db.getItem();
 //        Tripppy.db.close();
-//        refreshList();
-        Tripppy.LOG("Adding item: ");
+        Tripppy.current_trip_name = info;
+        Intent sndMsgIntent4 = new Intent(Tripppy.mContext, Screen5.class);
+        startActivityForResult(sndMsgIntent4, Tripppy.REQUEST_SCREEN5);
     }
 
 

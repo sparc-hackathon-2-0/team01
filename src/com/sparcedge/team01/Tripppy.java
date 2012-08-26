@@ -112,6 +112,7 @@ public class Tripppy extends Activity {
 
     private View.OnClickListener loginListener = new View.OnClickListener() {
         public void onClick(View v) {
+            /*
             facebook.authorize(currentActivity,new String[] {"publish_stream"},new Facebook.DialogListener() {
                 @Override
                 public void onComplete(Bundle values) {
@@ -142,7 +143,9 @@ public class Tripppy extends Activity {
                 public void onCancel() {
                     //To change body of implemented methods use File | Settings | File Templates.
                 }
-            });
+            });  */
+            Intent sndMsgIntent4 = new Intent(mContext, Screen2.class);
+            startActivityForResult(sndMsgIntent4, REQUEST_SCREEN2);
 
         }
     };

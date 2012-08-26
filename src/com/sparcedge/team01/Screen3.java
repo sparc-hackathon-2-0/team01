@@ -63,7 +63,7 @@ public class Screen3 extends Activity {
                     if(city ==  null || city.equals("")) {
                         return;
                     }
-                    updateStatus(Tripppy.facebook.getAccessToken());
+                    //updateStatus(Tripppy.facebook.getAccessToken());
 
                     progressDialog = ProgressDialog.show(Screen3.this, "", "Getting Weather...", true);
                       // you can put spaces in city name but NOT after the comma.  spaces should be %20 / urlencoded

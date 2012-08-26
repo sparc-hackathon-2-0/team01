@@ -43,8 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
+                android:paddingLeft="10dip"
                 android:textColor="@color/black"
                 android:hint=" City"
+                android:text="foo"
                 android:textSize="24dip"
                 android:background="@drawable/rounded_edittext"
                 />
@@ -57,6 +59,7 @@
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
                 android:hint=" State"
+                android:paddingLeft="10dip"
                 android:textSize="24dip"
                 android:background="@drawable/rounded_edittext"
                 />
@@ -97,6 +100,7 @@
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
                 android:hint=" Month"
+                android:paddingLeft="10dip"
                 android:textSize="24dip"
                 android:background="@drawable/rounded_edittext"
                 />
@@ -109,6 +113,7 @@
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
                 android:hint=" Day"
+                android:paddingLeft="10dip"
                 android:textSize="24dip"
                 android:background="@drawable/rounded_edittext"
                 />
@@ -121,6 +126,7 @@
                 android:layout_marginRight="10dip"
                 android:textColor="@color/black"
                 android:hint="Year"
+                android:paddingLeft="10dip"
                 android:text="2012"
                 android:textSize="24dip"
                 android:background="@drawable/rounded_edittext"

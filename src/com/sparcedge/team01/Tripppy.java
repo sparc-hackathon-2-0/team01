@@ -118,7 +118,8 @@ public class Tripppy extends Activity {
                 public void onComplete(Bundle values) {
                     loadPreferences();
                     if(first_time){
-                        updateStatus(values.getString(Facebook.TOKEN));
+                        //TODO:Uncomment this in production
+//                        updateStatus(values.getString(Facebook.TOKEN));
                     }
                     Intent sndMsgIntent4 = new Intent(mContext, Screen2.class);
                     startActivityForResult(sndMsgIntent4, REQUEST_SCREEN2);

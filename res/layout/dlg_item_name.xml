@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+        >
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:background="@drawable/grad_bg"
+            >
+        <EditText android:id="@+id/etItemName"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="Item Name"
+                  android:gravity="left"
+                  android:layout_gravity="center"
+                  android:layout_weight="1"
+                  android:layout_margin="10dip"
+                  android:minWidth="200dip"
+                  android:maxLength="16"
+                />
+        <Button android:id="@+id/btnSave"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dip"
+                />
+    </LinearLayout>
+
+</LinearLayout>

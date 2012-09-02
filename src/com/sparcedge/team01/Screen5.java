@@ -1,15 +1,17 @@
 package com.sparcedge.team01;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
+import com.facebook.android.DialogError;
+import com.facebook.android.Facebook;
+import com.facebook.android.FacebookError;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,6 +29,8 @@ public class Screen5 extends ListActivity {
     private LayoutInflater mInflater;
     private Vector<String> data;
     public static int REQUEST_SCREEN2 = Tripppy.REQUEST_SCREEN2;
+    public static Context mContext;
+    public static Dialog dlg = null;
 
     String rd;
     static final String[] items =
@@ -36,6 +40,7 @@ public class Screen5 extends ListActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.screen5);
+        mContext = this;
         refreshList();
 
         Button btnSaveTrip = (Button) findViewById(R.id.btnSaveTrip);
@@ -143,5 +148,48 @@ public class Screen5 extends ListActivity {
             }
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.layout.menu, menu);
+        return true;
+    }
+
+    /**
+     * Event Handling for Individual menu item selected
+     * Identify single menu item by it's id
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        dlg = new Dialog(mContext);
+        dlg.setContentView(R.layout.dlg_item_name);
+        dlg.setTitle("Enter Item Name");
+        dlg.setCancelable(false);
+        Button b1 = (Button) dlg.findViewById(R.id.btnSave);
+        b1.setOnClickListener(listener);
+        dlg.show();
+        return true;
+
+    }
+
+    private View.OnClickListener listener = new View.OnClickListener() {
+        public void onClick(View v) {
+            EditText e = (EditText)dlg.findViewById(R.id.etItemName);
+            if(e != null && !e.getText().toString().trim().equals("")) {
+                String name = e.getText().toString().trim();
+                Tripppy.db.open();
+                ItemInfo itemInfo = new ItemInfo(Tripppy.current_trip_name,name);
+                Tripppy.db.addItemToTrip(itemInfo);
+                Tripppy.db.close();
+                dlg.dismiss();
+            }
+            refreshList();
+        }
+    };
+
+
 
 }
